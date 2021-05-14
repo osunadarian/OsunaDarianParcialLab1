@@ -1,7 +1,11 @@
+#include "tipo.h"
+#include "recaudacion.h"
+
 #ifndef CONTRIBUYENTES_H_
 #define CONTRIBUYENTES_H_
 
 #define TAM_C 50
+#define TAM_R 50
 
 typedef struct{
 
@@ -13,6 +17,7 @@ typedef struct{
 
 }eContribuyente;
 
+
 int validarCadena(char cadena[]);
 int inicializarContribuyentes(eContribuyente contribuyentes[], int tam_c);
 int lugarLibre(eContribuyente contribuyentes[], int tam_c);
@@ -22,5 +27,6 @@ int mostrarContribuyentes(eContribuyente contribuyentes[], int tam_c);
 int encontrarContribuyente(eContribuyente contribuyentes[], int tam_c, int id);
 int checkContribuyentes(eContribuyente contribuyentes[], int tam_c);
 int modificarContribuyente(eContribuyente contribuyentes[], int tam_c);
+
 
 #endif /* CONTRIBUYENTES_H_ */

@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include "contribuyentes.h"
 #include "recaudacion.h"
+#include "contribuyentes.h"
 #include "tipo.h"
 #include "menu.h"
 
@@ -46,6 +46,7 @@ int main(void){
 			modificarContribuyente(contribuyentes,TAM_C);
 			break;
 		case 3:
+			//bajaContribuyente(contribuyentes,TAM_C);
 			break;
 		case 4:
 			agregarRecaudacion(recaudaciones,TAM_R,&idRecaudacacion,contribuyentes,TAM_C,tipos,TAM_Tipos);

@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include "recaudacion.h"
 #include "contribuyentes.h"
+
+#include "tipo.h"
 #include "menu.h"
 
 
@@ -284,4 +287,58 @@ int modificarContribuyente(eContribuyente contribuyentes[], int tam_c)
 	}
 
 	return error;
+}
+
+int bajaContribuyente(eContribuyente contribuyentes[], int tam_c, eRecaudacion recaudaciones[], int tam_r, eTipo tipos[], int tam_t)
+{
+	int error = 1;
+	int idOut;
+	int indice;
+	int confirm;
+
+	if(contribuyentes!=NULL && tam_c>0)
+	{
+		fflush(stdin);
+		mostrarContribuyentes(contribuyentes,tam_c);
+        printf("\n\n        POR FAVOR, INGRESE EL ID DEL CONTRIBUYENTE A REMOVER DEL SISTEMA: ");
+        fflush(stdin);
+        scanf("%d", &idOut);
+
+        indice = encontrarContribuyente(contribuyentes,tam_c,idOut);
+
+        if(indice==-1)
+        {
+            printf("\n\n               ----> EL ID INGRESADO ES INVALIDO <----\n\n\n\n");
+            system("pause");
+        }
+        else
+        {
+        	printf("\n\n              EL SIGUIENTE CONTRIBUYENTE SERA BORRADO DEL SISTEMA\n\n");
+            printf("************************************************************");
+            printf("\n       ID        APELLIDO        NOMBRE         CUIL      ");
+            mostrarUnContribuyente(contribuyentes[indice]);
+            printf("************************************************************");
+            printf("\n\n                         DESEA CONFIRMAR BAJA?");
+            printf("\n\n                         [1] - SI  [2] - NO");
+            printf("\n\n                          DIGITE RESPUESTA: ");
+            scanf("%d", &confirm);
+            if(confirm == 1)
+            {
+            	contribuyentes[indice].isEmpty = 1;
+            	recaudaciones[indice].isEmpty = 1;
+                printf("\n\n                   BAJA DEL CONTRIBUYENTE COMPLETA\n\n\n");
+                error = 0;
+            }
+            else
+            {
+                printf("\n\n          BAJA DEL CONTRIBUYENTE CANCELADA POR EL USUARIO\n\n\n");
+                error = 2;
+                system("pause");
+            }
+        }
+	}
+
+
+	return error;
+
 }
