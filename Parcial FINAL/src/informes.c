@@ -124,16 +124,10 @@ int impuestosPorMes(eRecaudacion recaudaciones[], int tam_r, eContribuyente cont
 			if(recaudaciones[i].mes == 2 && recaudaciones[i].isEmpty==0)
 			{
 				id = recaudaciones[i].idContribuyente;
-			}
-
-			for(int j=0;j<tam_c;j++)
-			{
 				mostrarContribuyentePorId(contribuyentes,tam_c,id);
 			}
 		}
-
 	}
 
 	return error;
-
 }
